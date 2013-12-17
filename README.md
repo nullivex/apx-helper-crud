@@ -120,3 +120,11 @@ crud.remove(Model,data,cb)
 Callback format `cb(err)`
 
 **Note** will accept an array of data objects and will iterate them.
+
+## Changelog
+
+### 0.1.1
+* Added missing dependencies
+
+### 0.1.0
+* Initial release
