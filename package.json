@@ -43,7 +43,8 @@
     "apx": "~0.2.1",
     "apx-mongoose": "~0.3.0",
     "mongoose-list": "~0.1.0",
-    "mongoose-merge-plugin": "0.0.3"
+    "mongoose-merge-plugin": "0.0.3",
+    "mongoose": "~3.8.2"
   },
   "scripts": {
     "test": "grunt test"
