@@ -1,4 +1,4 @@
-apx-helper-crud
+apx-helper-crud [![Build Status](https://travis-ci.org/snailjs/apx-helper-crud.png?branch=master)](https://travis-ci.org/snailjs/apx-helper-crud)
 ============
 
 CRUD (Create Read Update Delete) helper for APX API server actions
