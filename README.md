@@ -3,7 +3,7 @@ apx-helper-crud
 
 CRUD (Create Read Update Delete) helper for APX API server actions
 
-Requires Mongoose Models and the [mongoose-list](https://github.com/snailjs/mongoose-list) plugin.
+Requires Mongoose Models and the [mongoose-list](https://github.com/snailjs/mongoose-list) and [mongoose-merge plugin](https://github.com/eherve/mongoose-merge-plugin) plugins.
 
 ## Usage
 
@@ -104,6 +104,7 @@ crud.save(Model,doc,cb)
 Callback format `cb(err,result)`
 
 **Note** will accept an array of documents and will return an array of results.
+
 **IMPORTANT** requires the
 [mongoose-merge plugin](https://github.com/eherve/mongoose-merge-plugin)
 to be loaded in the model.
