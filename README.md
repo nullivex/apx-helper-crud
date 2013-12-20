@@ -123,6 +123,10 @@ Callback format `cb(err)`
 
 ## Changelog
 
+### 0.1.2
+* Fixed responses needing to be passed to `doc.toJSON({virtuals: true})`
+* Updated to apx 0.3.0
+
 ### 0.1.1
 * Added missing dependencies
 

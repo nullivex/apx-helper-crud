@@ -7,12 +7,13 @@ describe('HelperCrud',function(){
     apx = new Apx({
       testing: true,
       cwd: __dirname,
-      initializers: [require('apx-mongoose')],
+      initializers: ['apx-mongoose'],
       mongoose: {
         name: 'apx-helper-crud-test',
-        models: 'models/*.js'
+        models: ['models/*.js']
       },
-      onReady: function(apx){
+      onReady: function(err,apx){
+        if(err) throw err
         var items = []
         for(var i=0; i<100; i++){
           items.push({name: 'test doc'})
