@@ -123,6 +123,9 @@ Callback format `cb(err)`
 
 ## Changelog
 
+### 0.1.3
+* Better error handling on un-sanitized input
+
 ### 0.1.2
 * Fixed responses needing to be passed to `doc.toJSON({virtuals: true})`
 * Updated to apx 0.3.0
