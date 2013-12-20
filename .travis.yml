@@ -6,4 +6,3 @@ before_script:
   - 'npm install -g grunt-cli'
 services:
   - mongodb
-  - redis-server
