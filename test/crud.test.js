@@ -140,4 +140,22 @@ describe('HelperCrud',function(){
       done()
     })
   })
+  it('should return default methods',function(){
+    var methods = Crud.methods()
+    expect(methods).to.include.members(['find','findOne','list','save','remove'])
+  })
+  it('should return default methods plus user methods',function(){
+    var methods = Crud.methods(['login','logout'])
+    expect(methods).to.include.members(['find','findOne','list','save','remove','login','logout'])
+  })
+  it('should add a single user method supplied as a string',function(){
+    var methods = Crud.methods('login')
+    expect(methods).to.include.members(['find','findOne','list','save','remove','login'])
+  })
+  it('should allow a function to be supplied to methods',function(){
+    var methods = Crud.methods(function(){
+      return ['login','logout']
+    })
+    expect(methods).to.include.members(['find','findOne','list','save','remove','login','logout'])
+  })
 })

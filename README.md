@@ -26,6 +26,41 @@ var Crud = require('apx-helper-crud')
 module.exports = new Crud(Model,'test','Test Module')
 ```
 
+## Route Helper
+
+Helper CRUD will also help populate route methods to cut down on repetition.
+
+**config.js**
+```js
+var crud = require('apx-helper-crud')
+
+module.exports = {
+  express: {
+    routes: [
+      {get: {path: '/myAction', file: 'actions/myAction.js', methods: crud.methods()}}
+    ]
+  }
+}
+```
+
+You can also supply additional routes to the methods helper.
+
+**config.js**
+```js
+var crud = require('apx-helper-crud')
+
+module.exports = {
+  express: {
+    routes: [
+      {get: {path: '/myAction', file: 'actions/myAction.js', methods: crud.methods(['extraAction','extraAction2'])}}
+    ]
+  }
+}
+```
+
+Alternatively a string may be passed that will be added as a single method. Also a function may be passed that returns
+either a string or an array of methods.
+
 ## Constructor
 
 The constructor only takes the following arguments.
@@ -126,6 +161,9 @@ Accepts a query object or an array of query objects.
 Returns success or error only.
 
 ## Changelog
+
+### 0.2.2
+* Added methods helper to populate routes
 
 ### 0.2.1
 * Crud helper now fills name and description along with default run task

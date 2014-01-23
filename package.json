@@ -1,6 +1,6 @@
 {
   "name": "apx-helper-crud",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "CRUD (Create Read Update Delete) helper for APX API server actions ",
   "homepage": "https://github.com/snailjs/apx-helper-crud",
   "bugs": "https://github.com/snailjs/apx-helper-crud/issues",
