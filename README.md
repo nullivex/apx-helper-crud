@@ -14,42 +14,21 @@ $ npm install apx-helper-crud --save
 ```
 
 ```js
-var crud = require('apx-helper-crud')
+var Crud = require('apx-helper-crud')
+  , model = require('./models/test')
+
+//will populate all the following crud functions
+// * find
+// * findOne
+// * list (which required the model to use the mongoose-list plugin)
+// * save
+// * remove
+module.exports = exports = new Crud(model.model)
 
 exports.name = 'page'
 exports.description = 'Manage pages'
 exports.run = function(apx,req,res){
   res.error('no default method supported')
-}
-exports.find = function(apx,req,res){
-  crud.find(apx.models.page,req.data,function(err,results){
-    if(err) res.error(err)
-    else res.send({results: results})
-  })
-}
-exports.findOne = function(apx,req,res){
-  crud.findOne(apx.models.page,req.data,function(err,results){
-    if(err) res.error(err)
-    else res.send({results: results})
-  })
-}
-exports.list = function(apx,req,res){
-  crud.list(apx.models.page,req.data,function(err,count,results){
-    if(err) res.error(err)
-    else res.send({count: count, results: results})
-  })
-}
-exports.save = function(apx,req,res){
-  crud.save(apx.models.page,req.data,function(err,results){
-    if(err) res.error(err)
-    else res.send({results: results})
-  })
-}
-exports.remove = function(apx,req,res){
-  crud.remove(apx.models.page,req.data,function(err){
-    if(err) res.error(err)
-    else res.success()
-  })
 }
 ```
 
@@ -122,6 +101,9 @@ Callback format `cb(err)`
 **Note** will accept an array of data objects and will iterate them.
 
 ## Changelog
+
+### 0.2.0
+* Completely re-imagined interface that can just extend methods of an action.
 
 ### 0.1.3
 * Better error handling on un-sanitized input
