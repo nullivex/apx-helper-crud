@@ -33,78 +33,108 @@ exports.run = function(apx,req,res,next){
 }
 ```
 
+## Constructor
+
+The constructor only takes a single argument which is the mongoose model to work with.
+
+```js
+var Crud = require('apx-helper-crud')
+  , Model = require('./models/test').model
+  , crud = new Crud(Model)
+```
+
 ## Methods
+
+All of the Crud methods are APX actions so they accept request data directly and return APX responses.
 
 ### Find
 
 Find records by the criteria in the data object.
 
+Takes a Mongoose query object as the only argument.
+
 ```js
-crud.find(Model,data,cb)
+{name: 'test doc'}
 ```
 
-Callback format `cb(err,results)`
+Returns an object of results.
+
+```js
+{results: [{name: 'test doc'}]}
+```
 
 ### Find One
 
 Find a single record by the criteriea in the data object.
 Useful for finding items by ObjectID
 
+Takes a mongoose query object as the only argument.
+
 ```js
-crud.findOne(Model,data,cb)
+{name: 'test doc'}
 ```
 
-Callback format `cb(err,result)`
+Returns an object of results.
+
+```js
+{result: {name: 'test doc'}}
+```
 
 ### List
 
 Utilizes the [mongoose-list](https://github.com/snailjs/mongoose-list) plugin
 to iterate records in a collection.
 
+Takes a mongoose-list arugment object.
+
 ```js
-crud.list(Model,search,cb)
+{start: 0, limit: 10, find: 'foo', sort: 'bar'}
 ```
 
-* Model -- The model to execute calls on (must have loaded mongoose-list)
-* Search -- Object containing search parameters that is passed to mongoose-list
+Returns a results object
 
-Callback format `cb(err,resultCount,results)`
-
-* resultCount -- total number of objects matching `search`
-* results -- Array of results in order
+```js
+{count: 10, results: [{name: 'test doc'}]}
+```
 
 ### Save
 
 Save one or many documents.
 
-```js
-crud.save(Model,doc,cb)
-```
-
-Callback format `cb(err,result)`
-
-**Note** will accept an array of documents and will return an array of results.
-
 **IMPORTANT** requires the
 [mongoose-merge plugin](https://github.com/eherve/mongoose-merge-plugin)
 to be loaded in the model.
+
+Accepts a document or an array of documents.
+
+```js
+[{name: 'test doc'}]
+```
+
+Returns a result object
+
+```js
+{results: [{name: 'test doc'}]}
+```
 
 ### Remove
 
 Remove one or many documents.
 
+Accepts a query object or an array of query objects.
+
 ```js
-crud.remove(Model,data,cb)
+[{name: 'test doc'}]
 ```
 
-Callback format `cb(err)`
-
-**Note** will accept an array of data objects and will iterate them.
+Returns success or error only.
 
 ## Changelog
 
 ### 0.2.0
 * Completely re-imagined interface that can just extend methods of an action.
+* Simplified return formats to be more predictable
+* All methods are now APX actions
 
 ### 0.1.3
 * Better error handling on un-sanitized input
