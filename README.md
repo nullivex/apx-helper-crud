@@ -27,8 +27,9 @@ module.exports = exports = new Crud(model.model)
 
 exports.name = 'page'
 exports.description = 'Manage pages'
-exports.run = function(apx,req,res){
+exports.run = function(apx,req,res,next){
   res.error('no default method supported')
+  next()
 }
 ```
 
