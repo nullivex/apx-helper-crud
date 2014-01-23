@@ -113,7 +113,7 @@ describe('HelperCrud',function(){
       doc.name = 'test doc updated'
     })
     var doc = JSON.parse(JSON.stringify(docs))
-    apx.instance.runAction(crud,{items: doc},'save',function(err,res){
+    apx.instance.runAction(crud,doc,'save',function(err,res){
       if(err) throw err
       expect(res.get('status')).to.equal('ok')
       expect(res.get('message')).to.equal('success')

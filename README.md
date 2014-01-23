@@ -162,6 +162,9 @@ Returns success or error only.
 
 ## Changelog
 
+### 0.2.4 (unreleased)
+* Fixed small issue with save trying to read the property `items` in the request
+
 ### 0.2.3
 * Upgraded to apx 0.7.1 and apx-mongoose 0.5.1
 
