@@ -162,6 +162,9 @@ Returns success or error only.
 
 ## Changelog
 
+### 0.2.3
+* Upgraded to apx 0.7.1 and apx-mongoose 0.5.1
+
 ### 0.2.2
 * Added methods helper to populate routes
 
