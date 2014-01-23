@@ -10,7 +10,7 @@ describe('HelperCrud',function(){
   }
   before(function(done){
     apx.once('ready',function(apx){
-      crud = new Crud(apx.models.model.model)
+      crud = new Crud(apx.models.model.model,'test','Test Module')
       async.each(
         items,
         function(item,next){
@@ -46,6 +46,27 @@ describe('HelperCrud',function(){
         apx.stop()
       }
     )
+  })
+  it('should have a name',function(){
+    expect(crud.name).to.equal('test')
+  })
+  it('should have a description',function(){
+    expect(crud.description).to.equal('Test Module')
+  })
+
+  it('should implement a run method that returns error',function(done){
+    apx.instance.runAction(crud,{},'run',function(err,res){
+      expect(res.get('status')).to.equal('error')
+      expect(res.get('message')).to.equal('No default method defined')
+      done()
+    })
+  })
+  it('should default to the run method',function(done){
+    apx.instance.runAction(crud,{},function(err,res){
+      expect(res.get('status')).to.equal('error')
+      expect(res.get('message')).to.equal('No default method defined')
+      done()
+    })
   })
   it('should find records',function(done){
     apx.instance.runAction(crud,{name: 'test doc'},'find',function(err,res){

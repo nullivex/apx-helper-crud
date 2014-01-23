@@ -15,7 +15,7 @@ $ npm install apx-helper-crud --save
 
 ```js
 var Crud = require('apx-helper-crud')
-  , model = require('./models/test')
+  , Model = require('./models/test').model
 
 //will populate all the following crud functions
 // * find
@@ -23,24 +23,20 @@ var Crud = require('apx-helper-crud')
 // * list (which required the model to use the mongoose-list plugin)
 // * save
 // * remove
-module.exports = exports = new Crud(model.model)
-
-exports.name = 'page'
-exports.description = 'Manage pages'
-exports.run = function(apx,req,res,next){
-  res.error('no default method supported')
-  next()
-}
+module.exports = new Crud(Model,'test','Test Module')
 ```
 
 ## Constructor
 
-The constructor only takes a single argument which is the mongoose model to work with.
+The constructor only takes the following arguments.
+* Model -- The model to operate on
+* Name -- Name of the module
+* Description -- Description the module
 
 ```js
 var Crud = require('apx-helper-crud')
   , Model = require('./models/test').model
-  , crud = new Crud(Model)
+  , crud = new Crud(Model,'test','Test Module')
 ```
 
 ## Methods
@@ -130,6 +126,10 @@ Accepts a query object or an array of query objects.
 Returns success or error only.
 
 ## Changelog
+
+### 0.2.1
+* Crud helper now fills name and description along with default run task
+* Updated usage statement
 
 ### 0.2.0
 * Completely re-imagined interface that can just extend methods of an action.
