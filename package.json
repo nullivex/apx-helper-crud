@@ -41,8 +41,8 @@
     "mocha": "~1.15.1",
     "chai": "~1.8.1",
     "jshint-stylish": "~0.1.3",
-    "apx": "snailjs/apx#master",
-    "apx-mongoose": "snailjs/apx-mongoose#master",
+    "apx": "~0.6.1",
+    "apx-mongoose": "~0.5.0",
     "mongoose-list": "~0.2.0",
     "mongoose-merge-plugin": "0.0.3",
     "mongoose": "~3.8.2"
