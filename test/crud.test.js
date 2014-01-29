@@ -53,7 +53,20 @@ describe('HelperCrud',function(){
   it('should have a description',function(){
     expect(crud.description).to.equal('Test Module')
   })
-
+  it('should gracefully fail when no record is found',function(done){
+    apx.instance.runAction(crud,{id: 'foo'},'findOne',function(err,res){
+      expect(res.get('status')).to.equal('error')
+      expect(res.get('message')).to.equal('No record was found')
+      done()
+    })
+  })
+  it('should gracefully fail with an invalid data set passed to create',function(done){
+    apx.instance.runAction(crud,{},'save',function(err,res){
+      expect(res.get('status')).to.equal('error')
+      expect(res.get('message')).to.equal('No parameters passed for save')
+      done()
+    })
+  })
   it('should implement a run method that returns error',function(done){
     apx.instance.runAction(crud,{},'run',function(err,res){
       expect(res.get('status')).to.equal('error')
