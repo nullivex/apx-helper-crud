@@ -153,6 +153,13 @@ describe('HelperCrud',function(){
       done()
     })
   })
+  it('should gracefully fail with an invalid data set passed to remove',function(done){
+    apx.instance.runAction(crud,{},'remove',function(err,res){
+      expect(res.get('status')).to.equal('error')
+      expect(res.get('message')).to.equal('No parameters passed for remove')
+      done()
+    })
+  })
   it('should return default methods',function(){
     var methods = Crud.methods()
     expect(methods).to.include.members(['find','findOne','list','save','remove'])
