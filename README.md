@@ -162,7 +162,7 @@ Returns success or error only.
 
 ## Changelog
 
-### 0.2.4 (unreleased)
+### 0.2.4
 * Fixed small issue with save trying to read the property `items` in the request
 * Added testing against erroneous input for `save`, `remove` and `findOne`
 * Fixed issues with error handling on `save`, `remove` and `findOne`
