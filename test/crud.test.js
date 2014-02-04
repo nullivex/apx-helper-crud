@@ -1,4 +1,6 @@
-var apx = require('apx')
+'use strict';
+var expect = require('chai').expect
+  , apx = require('apx')
   , async = require('async')
   , Crud = require('../lib/crud')
   , crud

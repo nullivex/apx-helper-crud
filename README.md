@@ -162,6 +162,11 @@ Returns success or error only.
 
 ## Changelog
 
+### 0.2.5
+* Updated to implement `'use strict';` in all files
+* Implemented apx-roles support to check permissions when available
+* Updated jshintrc to newest standards with other apx projects
+
 ### 0.2.4
 * Fixed small issue with save trying to read the property `items` in the request
 * Added testing against erroneous input for `save`, `remove` and `findOne`

@@ -14,7 +14,7 @@ module.exports = function(grunt){
         options: {
           reporter: 'spec'
         },
-        src: ['test/init.js','test/*.test.js']
+        src: ['test/*.test.js']
       }
     },
     watch: {
@@ -38,6 +38,5 @@ module.exports = function(grunt){
   grunt.registerTask('update',['projectUpdate'])
   grunt.registerTask('test',['jshint','mochaTest:test'])
   grunt.registerTask('dev',['watch:dev'])
-  grunt.registerTask('start',['nodemon:production'])
 
 }

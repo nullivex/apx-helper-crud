@@ -1,3 +1,4 @@
+'use strict';
 var mongoose = require('mongoose')
 mongoose.plugin(require('mongoose-list'))
 mongoose.plugin(require('mongoose-merge-plugin'))
