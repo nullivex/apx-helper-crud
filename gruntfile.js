@@ -1,3 +1,4 @@
+'use strict';
 module.exports = function(grunt){
 
   //config
@@ -7,7 +8,7 @@ module.exports = function(grunt){
         jshintrc: true,
         reporter: require('jshint-stylish')
       },
-      apx: ['*.js','lib/*.js','test/*.js']
+      dev: ['*.js','lib/*.js','test/*.js']
     },
     mochaTest: {
       test: {
