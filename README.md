@@ -160,6 +160,31 @@ Accepts a query object or an array of query objects.
 
 Returns success or error only.
 
+## Roles
+
+If [apx-roles](https://github.com/snailjs/apx-roles) is loaded at initialization they will be implemented by the crud
+helper unless explicitly disabled.
+
+The use of roles also requires [apx-session](https://github.com/snailjs/apx-session) to be loaded as it will look for
+`apx.session.get('profile')` to test against and will default to the profile `guest`.
+
+Take a look at the following example
+```js
+module.exports = new Crud(Model,'foo','my crud action')
+```
+
+This will expose the following roles.
+* foo.find
+* foo.save
+* foo.remove
+
+`find`, `findOne`, and `list` are all considered part of the `find` permission.
+
+To disable roles even with the module loaded, try the following
+```js
+module.exports = new Crud(Model,'foo','my crud action',{useRoles: false})
+```
+
 ## Changelog
 
 ### 0.2.5
