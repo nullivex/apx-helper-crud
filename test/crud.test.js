@@ -187,14 +187,11 @@ describe('HelperCrud',function(){
     var sessionMiddleware = {
       name: 'sessionMiddleware',
       description: 'middleware used to inject the profile for testing',
-      pre: function(apx,req,res,next){
+      run: function(apx,req,res,next){
         if(req.exists('setProfile')){
           req.session.set('profile',req.get('setProfile'))
           req.remove('setProfile')
         }
-        next()
-      },
-      post: function(apx,req,res,next){
         next()
       }
     }
