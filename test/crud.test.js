@@ -6,7 +6,6 @@ var expect = require('chai').expect
   , crud
 describe('HelperCrud',function(){
   describe('Functionality',function(){
-
     var items = []
       , docs = []
     for(var i=0; i<100; i++){
@@ -184,8 +183,78 @@ describe('HelperCrud',function(){
     })
   })
   describe('Permissions',function(){
-    it('should not use roles even if loaded and disabled')
-    it('should fail when using the guest permission')
-    it('should pass when using the proper profile')
+    var doc
+    var sessionMiddleware = {
+      name: 'sessionMiddleware',
+      description: 'middleware used to inject the profile for testing',
+      pre: function(apx,req,res,next){
+        if(req.exists('setProfile')){
+          req.session.set('profile',req.get('setProfile'))
+          req.remove('setProfile')
+        }
+        next()
+      },
+      post: function(apx,req,res,next){
+        next()
+      }
+    }
+    before(function(done){
+      apx.once('ready',function(apx){
+        crud = new Crud(apx.models.model.model,'test','Test Module')
+        doc = new apx.models.model.model()
+        doc.name = 'foo'
+        doc.save(done)
+      })
+      apx.start({
+        testing: true,
+        sysLogLevel: 2,
+        cwd: __dirname,
+        config: ['config.js'],
+        initializers: ['apx-mongoose','apx-roles'],
+        middleware: ['apx-session',sessionMiddleware],
+        models: ['models/*.js'],
+        mongoose: {
+          name: 'apx-helper-crud-test'
+        }
+      })
+    })
+    after(function(done){
+      apx.once('dead',function(){
+        done()
+      })
+      doc.remove(function(err){
+        if(err) throw err
+        apx.stop()
+      })
+    })
+    it('should not use roles even if loaded and disabled',function(done){
+      crud = new Crud(apx.instance.models.model.model,'test','test crud module',{useRoles: false})
+      apx.instance.runAction(crud,{name: 'foo'},'find',function(err,res){
+        if(err) throw err
+        expect(res.get('status')).to.equal('ok')
+        expect(res.get('message')).to.equal('success')
+        expect(res.get('results.0.name')).to.equal('foo')
+        done()
+      })
+    })
+    it('should fail when using the guest permission',function(done){
+      crud = new Crud(apx.instance.models.model.model,'test','test crud module')
+      apx.instance.runAction(crud,{name: 'foo'},'find',function(err,res){
+        if(err) throw err
+        expect(res.get('status')).to.equal('error')
+        expect(res.get('message')).to.equal('Permission denied')
+        done()
+      })
+    })
+    it('should pass when using the proper profile',function(done){
+      crud = new Crud(apx.instance.models.model.model,'test','test crud module')
+      apx.instance.runAction(crud,{name: 'foo', setProfile: 'admin'},'find',function(err,res){
+        if(err) throw err
+        expect(res.get('status')).to.equal('ok')
+        expect(res.get('message')).to.equal('success')
+        expect(res.get('results.0.name')).to.equal('foo')
+        done()
+      })
+    })
   })
 })

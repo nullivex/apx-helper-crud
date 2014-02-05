@@ -46,7 +46,9 @@
     "apx-mongoose": "~0.5.1",
     "mongoose-list": "~0.2.0",
     "mongoose-merge-plugin": "0.0.3",
-    "mongoose": "~3.8.2"
+    "mongoose": "~3.8.2",
+    "apx-session": "~0.2.2",
+    "apx-roles": "snailjs/apx-roles#master"
   },
   "scripts": {
     "test": "grunt test"
