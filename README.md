@@ -1,5 +1,16 @@
-apx-helper-crud [![Build Status](https://travis-ci.org/snailjs/apx-helper-crud.png?branch=master)](https://travis-ci.org/snailjs/apx-helper-crud)
+APX Helper CRUD
 ============
+
+## Kado
+
+STOP AND READ THIS
+
+APX or Apex is no longer maintained and is superseded by Kado.
+
+A new package is available to handle all your JavaScript needs.
+See [kado.org](https://kado.org) for details.
+
+## Summary
 
 CRUD (Create Read Update Delete) helper for APX API server actions
 
