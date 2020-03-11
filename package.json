@@ -46,7 +46,7 @@
     "apx-mongoose": "~0.5.1",
     "mongoose-list": "~0.2.0",
     "mongoose-merge-plugin": "0.0.3",
-    "mongoose": "~3.8.2",
+    "mongoose": "~5.9.4",
     "apx-session": "~0.2.2",
     "apx-roles": "~0.1.0"
   },
